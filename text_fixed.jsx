@@ -15,10 +15,10 @@ const DEFAULTS = {
 employees: [], clients: [], schedules: [], clockEntries: [], invoices: [], payslips: [],
 ownerPin: "1234", employeePins: {},
 settings: {
-companyName: "Lux Angels Cleaning",
-companyAddress: "12 Rue de la Liberté, L-1930 Luxembourg",
-companyEmail: "info@luxangels.lu",
-companyPhone: "+352 123 456",
+companyName: "Ren-Net Cleaning",
+companyAddress: "60 Grand-Rue, L-8510 Redange/Attert, Luxembourg",
+companyEmail: "info@ren-net.lu",
+companyPhone: "+352 26 62 17 88",
 vatNumber: "LU12345678",
 bankIban: "LU12 3456 7890 1234 5678",
 defaultVatRate: 17,
@@ -172,7 +172,7 @@ const revenue = data.invoices.filter(inv => inv.date?.startsWith(mo)).reduce((su
 return { Month: mo, Hours: Math.round(totalH * 100) / 100, Labor: Math.round(laborCost * 100) / 100, Revenue: Math.round(revenue * 100) / 100, Profit: Math.round((revenue - laborCost) * 100) / 100 };
 }), ["Month", "Hours", "Labor", "Revenue", "Profit"]);
 
-XLSX.writeFile(wb, `LuxAngels_DB_${getToday()}.xlsx`);
+XLSX.writeFile(wb, `RenNet_DB_${getToday()}.xlsx`);
 };
 
 // -- Excel Import --
@@ -340,7 +340,7 @@ return (
   <div className="no-print desk-sidebar" style={{ width: sideOpen ? 215 : 54, background: CL.sf, borderRight: `1px solid ${CL.bd}`, flexDirection: "column", transition: "width .2s", overflow: "hidden", flexShrink: 0 }}>
     <div style={{ padding: sideOpen ? "16px 12px" : "16px 8px", borderBottom: `1px solid ${CL.bd}`, display: "flex", alignItems: "center", gap: 9, cursor: "pointer" }} onClick={() => setSideOpen(!sideOpen)}>
       <div style={{ width: 30, height: 30, borderRadius: 8, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: CL.bg, flexShrink: 0 }}>LAC</div>
-      {sideOpen && <div><div style={{ fontSize: 13, fontWeight: 700, color: CL.gold, fontFamily: "var(--hd)", whiteSpace: "nowrap" }}>Lux Angels Cleaning</div><div style={{ fontSize: 10, color: CL.muted }}>Owner Portal</div></div>}
+      {sideOpen && <div><div style={{ fontSize: 13, fontWeight: 700, color: CL.gold, fontFamily: "var(--hd)", whiteSpace: "nowrap" }}>Ren-Net Cleaning</div><div style={{ fontSize: 10, color: CL.muted }}>Owner Portal</div></div>}
     </div>
     <nav style={{ flex: 1, padding: "6px 4px", overflowY: "auto" }}>
       {navItems.map(nav => (
@@ -405,7 +405,7 @@ return (
 <style>{globalCSS}</style>
 <div style={{ animation: "fadeIn .5s ease", textAlign: "center", width: 380, padding: "0 16px" }}>
 <div style={{ width: 80, height: 80, borderRadius: 24, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontSize: 32, fontWeight: 700, color: CL.bg, fontFamily: "'Cormorant Garamond', serif" }}>LAC</div>
-<h1 style={{ fontSize: 30, fontWeight: 700, color: CL.gold, fontFamily: "'Cormorant Garamond', serif", marginBottom: 4 }}>Lux Angels Cleaning</h1>
+<h1 style={{ fontSize: 30, fontWeight: 700, color: CL.gold, fontFamily: "'Cormorant Garamond', serif", marginBottom: 4 }}>Ren-Net Cleaning</h1>
 <p style={{ color: CL.muted, marginBottom: 30 }}>Management System</p>
 
     {!mode ? (

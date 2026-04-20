@@ -25,7 +25,7 @@ Most sensitive routes (`/api/employees`, `/api/clients`, `/api/schedules`, etc.)
 **Recommendation:** Add authentication (JWT/session) and role-based authorization middleware before all protected routes.
 
 ### 2) Credentials mismatch between README and seeded settings (High)
-README says default owner PIN is `1234`, but DB seed sets owner PIN to `LuxAngels@2025` and manager PIN to `Manager@2025`.
+README says default owner PIN is `1234`, but DB seed sets owner PIN to `RenNet@2025` and manager PIN to `Manager@2025`.
 
 **Impact:** Login failures, support overhead, confusion during onboarding/reset.
 
