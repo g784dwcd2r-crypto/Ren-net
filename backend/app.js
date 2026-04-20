@@ -32,8 +32,8 @@ app.use((_req, res, next) => {
 // Middleware — explicit CORS so every browser (Safari, Firefox, Chrome) gets
 // the right preflight response regardless of which origin is calling.
 const ALLOWED_ORIGINS = [
-  'https://luxangelsyamyam.onrender.com',
-  'https://luxangelsyamyam-frontend.onrender.com',
+  'https://ren-net.onrender.com',
+  'https://ren-net.onrender.com',
   /\.onrender\.com$/,
   /\.netlify\.app$/,
   /localhost/,
@@ -83,7 +83,7 @@ app.use('/api/auth', authLimiter);
 app.use('/api', apiLimiter);
 
 app.get('/', (_req, res) => {
-  res.json({ status: 'ok', message: 'Lux Angels API is running.' });
+  res.json({ status: 'ok', message: 'Ren-Net API is running.' });
 });
 
 app.get('/api/health/db', async (_req, res) => {
@@ -323,7 +323,7 @@ function buildNotificationHtml({ title, greeting, bodyLines, ctaText, ctaUrl, fo
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f7;padding:30px 0">
 <tr><td align="center">
 <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#fff;border-radius:8px;overflow:hidden">
-<tr><td style="background:#2c3e50;padding:24px 30px"><h1 style="margin:0;color:#fff;font-size:20px">${title || 'Lux Angels'}</h1></td></tr>
+<tr><td style="background:#2c3e50;padding:24px 30px"><h1 style="margin:0;color:#fff;font-size:20px">${title || 'Ren-Net'}</h1></td></tr>
 <tr><td style="padding:30px">
 ${greeting ? `<p style="margin:0 0 16px;color:#333;font-size:16px;font-weight:600">${greeting}</p>` : ''}
 ${rows}
@@ -355,7 +355,7 @@ async function sendEmail({ to, subject, body, html, from, attachments }) {
   const gateway = getEmailGateway(settings);
   if (!gateway) return { ok: false, status: 503, error: 'Email provider is not configured' };
   const senderEmail = String(from || settings.companyEmail || process.env.SMTP_USER || settings.smtpUser || process.env.ZEPTO_FROM_ADDRESS || settings.zeptoFromAddress || process.env.RESEND_FROM || settings.resendFrom || '').trim();
-  const senderName = settings.companyName || 'Lux Angels';
+  const senderName = settings.companyName || 'Ren-Net';
   if (!senderEmail) return { ok: false, status: 400, error: 'Sender email is missing' };
 
   if (gateway.provider === 'smtp') {
@@ -661,10 +661,10 @@ app.post('/api/auth/register-employee', async (req, res) => {
       [makeEmployeeId(), name, email, passwordHash, verificationHash]
     );
 
-    const verifyUrl = `${String(process.env.FRONTEND_URL || 'https://luxangelsyamyam-frontend.onrender.com').replace(/\/$/, '')}/verify-email?email=${encodeURIComponent(email)}&token=${verificationToken}`;
+    const verifyUrl = `${String(process.env.FRONTEND_URL || 'https://ren-net.onrender.com').replace(/\/$/, '')}/verify-email?email=${encodeURIComponent(email)}&token=${verificationToken}`;
     const emailSend = await sendEmail({
       to: email,
-      subject: 'Verify your Lux Angels account',
+      subject: 'Verify your Ren-Net account',
       body: `Hi ${name}, verify your email by opening this link: ${verifyUrl}`,
       html: `<p>Hi ${name},</p><p>Please verify your email:</p><p><a href="${verifyUrl}">Verify account</a></p>`,
     });
@@ -744,7 +744,7 @@ app.patch('/api/account-requests/:id/decision', async (req, res) => {
     const pending = reqResult.rows[0];
     if (!pending.email_verified) return res.status(400).json({ error: 'Email must be verified before approval decision' });
 
-    const frontendUrl = String(process.env.FRONTEND_URL || 'https://luxangelsyamyam-frontend.onrender.com').replace(/\/$/, '');
+    const frontendUrl = String(process.env.FRONTEND_URL || 'https://ren-net.onrender.com').replace(/\/$/, '');
 
     if (decision === 'reject') {
       await pool.query(
@@ -754,9 +754,9 @@ app.patch('/api/account-requests/:id/decision', async (req, res) => {
       res.json({ success: true, status: 'rejected' });
       sendEmail({
         to: pending.email,
-        subject: 'Lux Angels — Account request update',
-        body: buildNotificationText({ greeting: `Hi ${pending.name},`, bodyLines: ['Your account request for Lux Angels has not been approved.', rejectionReason ? `Reason: ${rejectionReason}` : 'Please contact us if you have any questions.'] }),
-        html: buildNotificationHtml({ title: 'Account Update', greeting: `Hi ${pending.name},`, bodyLines: ['Your account request for Lux Angels has not been approved.', rejectionReason ? `Reason: ${rejectionReason}` : 'Please contact us if you have any questions.'] }),
+        subject: 'Ren-Net — Account request update',
+        body: buildNotificationText({ greeting: `Hi ${pending.name},`, bodyLines: ['Your account request for Ren-Net has not been approved.', rejectionReason ? `Reason: ${rejectionReason}` : 'Please contact us if you have any questions.'] }),
+        html: buildNotificationHtml({ title: 'Account Update', greeting: `Hi ${pending.name},`, bodyLines: ['Your account request for Ren-Net has not been approved.', rejectionReason ? `Reason: ${rejectionReason}` : 'Please contact us if you have any questions.'] }),
       }).catch(err => console.error('Account rejection email failed:', err));
       return;
     }
@@ -778,9 +778,9 @@ app.patch('/api/account-requests/:id/decision', async (req, res) => {
     res.json({ success: true, status: 'approved', employeeId: employeeInsert.rows[0].id });
     sendEmail({
       to: pending.email,
-      subject: 'Lux Angels — Your account has been approved!',
-      body: buildNotificationText({ greeting: `Hi ${pending.name},`, bodyLines: ['Great news! Your Lux Angels account has been approved.', 'You can now log in and start using the platform.'], ctaText: 'Log in now', ctaUrl: frontendUrl }),
-      html: buildNotificationHtml({ title: 'Account Approved', greeting: `Hi ${pending.name},`, bodyLines: ['Great news! Your Lux Angels account has been approved.', 'You can now log in and start using the platform.'], ctaText: 'Log in now', ctaUrl: frontendUrl }),
+      subject: 'Ren-Net — Your account has been approved!',
+      body: buildNotificationText({ greeting: `Hi ${pending.name},`, bodyLines: ['Great news! Your Ren-Net account has been approved.', 'You can now log in and start using the platform.'], ctaText: 'Log in now', ctaUrl: frontendUrl }),
+      html: buildNotificationHtml({ title: 'Account Approved', greeting: `Hi ${pending.name},`, bodyLines: ['Great news! Your Ren-Net account has been approved.', 'You can now log in and start using the platform.'], ctaText: 'Log in now', ctaUrl: frontendUrl }),
     }).catch(err => console.error('Account approval email failed:', err));
     return;
   } catch (err) {
@@ -1256,7 +1256,7 @@ app.patch('/api/invoices/:id/status', async (req, res) => {
           if (status === 'sent') {
             sendEmail({
               to: client.email,
-              subject: `Facture ${inv.invoice_number} — Lux Angels`,
+              subject: `Facture ${inv.invoice_number} — Ren-Net`,
               body: buildNotificationText({ greeting: `Bonjour ${cname},`, bodyLines: [`Veuillez trouver ci-joint votre facture ${inv.invoice_number}.`, `Total : ${amount}`, dueStr ? `Échéance : ${dueStr}` : ''].filter(Boolean) }),
               html: buildNotificationHtml({ title: `Facture ${inv.invoice_number}`, greeting: `Bonjour ${cname},`, bodyLines: [`Veuillez trouver ci-joint votre facture <strong>${inv.invoice_number}</strong>.`, `Total : <strong>${amount}</strong>`, dueStr ? `Échéance : ${dueStr}` : ''].filter(Boolean) }),
             }).catch(err => console.error('Invoice sent email failed:', err));
@@ -1424,13 +1424,13 @@ app.post('/api/auth/cleaner-forgot-password', async (req, res) => {
       [tokenHash, employee.id]
     );
 
-    const frontendUrl = String(process.env.FRONTEND_URL || 'https://luxangelsyamyam-frontend.onrender.com').replace(/\/$/, '');
+    const frontendUrl = String(process.env.FRONTEND_URL || 'https://ren-net.onrender.com').replace(/\/$/, '');
     const resetUrl = `${frontendUrl}/?resetToken=${encodeURIComponent(token)}&resetEmail=${encodeURIComponent(email)}`;
     await sendEmail({
       to: email,
-      subject: 'Lux Angels — Reset your password',
+      subject: 'Ren-Net — Reset your password',
       body: `Hi ${employee.name}, reset your password by opening this link (valid 30 minutes): ${resetUrl}`,
-      html: `<p>Hi ${employee.name},</p><p>Click the link below to reset your Lux Angels password (valid 30 minutes):</p><p><a href="${resetUrl}">Reset password</a></p><p>If you did not request this, ignore this email.</p>`,
+      html: `<p>Hi ${employee.name},</p><p>Click the link below to reset your Ren-Net password (valid 30 minutes):</p><p><a href="${resetUrl}">Reset password</a></p><p>If you did not request this, ignore this email.</p>`,
     });
     return res.json({ success: true });
   } catch (err) {
@@ -1566,9 +1566,9 @@ app.post('/api/admin/test-email', async (req, res) => {
 
     const result = await sendEmail({
       to,
-      subject: 'Lux Angels — test email',
-      body: 'This is a test email from your Lux Angels backend.',
-      html: '<p>This is a <strong>test email</strong> from your Lux Angels backend.</p>',
+      subject: 'Ren-Net — test email',
+      body: 'This is a test email from your Ren-Net backend.',
+      html: '<p>This is a <strong>test email</strong> from your Ren-Net backend.</p>',
     });
     return res.json({ config, send: result });
   } catch (err) {
@@ -1613,7 +1613,7 @@ app.post('/api/notifications/send-document', async (req, res) => {
 
     const settingsResult = await pool.query("SELECT key, value FROM settings");
     const s = Object.fromEntries(settingsResult.rows.map(r => [r.key, r.value || '']));
-    const companyName = s.companyName || 'Lux Angels Cleaning';
+    const companyName = s.companyName || 'Ren-Net Cleaning';
     const l = emailLang || 'fr';
     const fmtD = (d) => d ? new Date(d).toLocaleDateString(l === 'fr' ? 'fr-FR' : 'en-GB') : '';
     const buildSig = () => s.emailSignature
@@ -1822,10 +1822,10 @@ app.post('/api/photo-uploads', async (req, res) => {
         const ownerEmail = ownerR.rows[0]?.value;
         if (!ownerEmail) return;
         const empName = empR.rows[0]?.name || 'Un employé';
-        const frontendUrl = String(process.env.FRONTEND_URL || 'https://luxangelsyamyam-frontend.onrender.com').replace(/\/$/, '');
+        const frontendUrl = String(process.env.FRONTEND_URL || 'https://ren-net.onrender.com').replace(/\/$/, '');
         sendEmail({
           to: ownerEmail,
-          subject: 'Nouveau signalement photo — Lux Angels',
+          subject: 'Nouveau signalement photo — Ren-Net',
           body: buildNotificationText({ greeting: 'Bonjour,', bodyLines: [`${empName} a signalé un problème via une photo.`, b.note ? `Note : ${b.note}` : ''].filter(Boolean), ctaText: 'Voir dans la plateforme', ctaUrl: frontendUrl }),
           html: buildNotificationHtml({ title: 'Signalement photo', greeting: 'Bonjour,', bodyLines: [`<strong>${empName}</strong> a signalé un problème via une photo.`, b.note ? `Note : ${b.note}` : ''].filter(Boolean), ctaText: 'Voir dans la plateforme', ctaUrl: frontendUrl }),
         }).catch(err => console.error('Photo upload email failed:', err));
@@ -2372,7 +2372,7 @@ async function initDb() {
   }
 
   try {
-    await pool.query("INSERT INTO settings (key, value) VALUES ('ownerEmail', 'owner@luxangels.lu') ON CONFLICT (key) DO NOTHING");
+    await pool.query("INSERT INTO settings (key, value) VALUES ('ownerEmail', 'owner@ren-net.lu') ON CONFLICT (key) DO NOTHING");
   } catch (err) {
     console.error('Settings seed failed:', err.message);
   }
@@ -2451,7 +2451,7 @@ initDb().then(() => {
 // Pings our own health endpoint every 10 minutes so the server stays awake 24/7.
 // ---------------------------------------------------------------------------
 function startKeepAlive() {
-  const SELF_URL = (process.env.RENDER_EXTERNAL_URL || 'https://luxangelsyamyam-api.onrender.com').replace(/\/$/, '');
+  const SELF_URL = (process.env.RENDER_EXTERNAL_URL || 'https://ren-net-api.onrender.com').replace(/\/$/, '');
   const PING_URL = `${SELF_URL}/api/health/db`;
   const INTERVAL_MS = 10 * 60 * 1000; // every 10 minutes
 

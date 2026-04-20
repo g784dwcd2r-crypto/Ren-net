@@ -938,10 +938,10 @@ ownerUsername: "", ownerPin: "",
 managerUsername: "", managerPin: "",
 employeePins: {}, employeeUsernames: {},
 settings: {
-companyName: "Lux Angels Cleaning",
-companyAddress: "12 Rue de la Liberté, L-1930 Luxembourg",
-companyEmail: "info@luxangels.lu",
-companyPhone: "+352 123 456",
+companyName: "Ren-Net Cleaning",
+companyAddress: "60 Grand-Rue, L-8510 Redange/Attert, Luxembourg",
+companyEmail: "info@ren-net.lu",
+companyPhone: "+352 26 62 17 88",
 companyWhatsApp: "",
 vatNumber: "LU12345678",
 bankIban: "LU12 3456 7890 1234 5678",
@@ -981,10 +981,10 @@ notifLowStock: false,
 notifPushEnabled: false,
 publicHolidays: ["newYear", "easterMonday", "labourDay", "europeDay", "ascensionDay", "whitMonday", "nationalDay", "assumptionDay", "allSaintsDay", "christmasDay", "stStephensDay"],
 customRoles: [],
-emailSignature: "Best regards,\nLux Angels Cleaning Team\ninfo@luxangels.lu | +352 123 456",
+emailSignature: "Best regards,\nRen-Net Cleaning Team\ninfo@ren-net.lu | +352 26 62 17 88",
 communicationChannel: "email",
-communicationCampaignSubject: "Lux Angels update",
-communicationCampaignBody: "Hello, this is your scheduled client communication from Lux Angels.",
+communicationCampaignSubject: "Ren-Net update",
+communicationCampaignBody: "Hello, this is your scheduled client communication from Ren-Net.",
 communicationOwnerManagerChannels: { email: true, sms: true, whatsapp: true },
 communicationOwnerManagerEvents: {
 clockInOut: true,
@@ -1224,7 +1224,7 @@ const getLuxPublicHolidaysByMonth = ({ year, month, selectedKeys }) => {
 };
 
 const DEFAULT_API_BASES = [
-"https://luxangelsyamyam-api.onrender.com",
+"https://ren-net-api.onrender.com",
 ];
 const normalizeBaseUrl = (url) => String(url || "").trim().replace(/\/$/, "");
 const envApiBase = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL);
@@ -2146,15 +2146,15 @@ return sched.status === nextStatus ? sched : { ...sched, status: nextStatus };
 const THEMES = {
 dark: {
   bg: "#0C0F16", sf: "#151922", s2: "#1C2130", bd: "#2C3348",
-  gold: "#D4A843", goldDark: "#B08C2F", goldLight: "#F0D78C",
-  blue: "#4A9FD9", green: "#3EC47E", red: "#D95454", orange: "#E89840",
+  gold: "#2EA3F2", goldDark: "#1B2A41", goldLight: "#7FC4F5",
+  blue: "#4A9FD9", green: "#6FBF73", red: "#D95454", orange: "#E89840",
   text: "#E4E6ED", muted: "#838AA3", dim: "#525976", white: "#FFF", line: "#2C3348",
 },
 light: {
-  bg: "#F4F1EA", sf: "#FFFFFF", s2: "#EDE9DF", bd: "#D4C9B0",
-  gold: "#B8860B", goldDark: "#8B6914", goldLight: "#D4A843",
-  blue: "#1565C0", green: "#2E7D32", red: "#C62828", orange: "#E65100",
-  text: "#1A1A1A", muted: "#5C5C5C", dim: "#888888", white: "#FFF", line: "#D4C9B0",
+  bg: "#FFFFFF", sf: "#FFFFFF", s2: "#F5F5F5", bd: "#E0E0E0",
+  gold: "#2EA3F2", goldDark: "#1B2A41", goldLight: "#7FC4F5",
+  blue: "#1565C0", green: "#6FBF73", red: "#C62828", orange: "#E65100",
+  text: "#1B2A41", muted: "#666666", dim: "#888888", white: "#FFF", line: "#E0E0E0",
 },
 };
 const INIT_THEME = loadTheme();
@@ -2205,7 +2205,7 @@ const ModalBox = ({ title, onClose, children, wide }) => (
   <div className="modal-overlay" style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.7)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "20px" }} onClick={onClose}>
     <div className={wide ? "modal-wide" : "modal-normal"} style={{ ...cardSt, overflow: "auto", display: "flex", flexDirection: "column" }} onClick={ev => ev.stopPropagation()}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 28, position: "sticky", top: 0, background: CL.sf, paddingBottom: 16, borderBottom: `1px solid ${CL.bd}`, zIndex: 1 }}>
-        <h2 style={{ margin: 0, fontSize: 22, color: CL.gold, fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.02em" }}>{uiText(title)}</h2>
+        <h2 style={{ margin: 0, fontSize: 22, color: CL.gold, fontFamily: "'Poppins', 'Montserrat', sans-serif", letterSpacing: "0.02em" }}>{uiText(title)}</h2>
         <button onClick={onClose} style={{ background: CL.bd, border: "none", cursor: "pointer", color: CL.muted, padding: "6px 8px", borderRadius: 8, display: "flex", alignItems: "center" }}>{ICN.close}</button>
       </div>
       {children}
@@ -2375,7 +2375,7 @@ const StatCard = ({ label, value, icon, color = CL.gold }) => (
 
   <div style={{ ...cardSt, display: "flex", alignItems: "center", gap: 14, flex: 1, minWidth: 170, borderTop: `3px solid ${color}` }}>
     <div style={{ width: 42, height: 42, borderRadius: 12, background: color + "15", display: "flex", alignItems: "center", justifyContent: "center", color, flexShrink: 0 }}>{icon}</div>
-    <div><div style={{ fontSize: 12, color: CL.muted, marginBottom: 2 }}>{uiText(label)}</div><div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Cormorant Garamond', serif" }}>{value}</div></div>
+    <div><div style={{ fontSize: 12, color: CL.muted, marginBottom: 2 }}>{uiText(label)}</div><div style={{ fontSize: 20, fontWeight: 700, fontFamily: "'Poppins', 'Montserrat', sans-serif" }}>{value}</div></div>
   </div>
 );
 
@@ -2614,7 +2614,7 @@ const buffer = await wb.xlsx.writeBuffer();
 const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
 const url = URL.createObjectURL(blob);
 const a = document.createElement("a");
-a.href = url; a.download = `LuxAngels_DB_${getToday()}.xlsx`; a.click();
+a.href = url; a.download = `RenNet_DB_${getToday()}.xlsx`; a.click();
 URL.revokeObjectURL(url);
 };
 
@@ -2772,8 +2772,8 @@ const sheet = (name) => {
 // GLOBAL CSS
 // ==============================================
 const globalCSS = `
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap');
-:root { --bd: Outfit, sans-serif; --hd: Cormorant Garamond, serif; }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+:root { --bd: Poppins, sans-serif; --hd: Poppins, sans-serif; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
   body { line-height: 1.45; }
@@ -3436,8 +3436,8 @@ return (
   {/* Desktop Sidebar */}
   <div className="no-print desk-sidebar" style={{ width: sideOpen ? 215 : 54, background: CL.sf, borderRight: `1px solid ${CL.bd}`, flexDirection: "column", transition: "width .2s", overflow: "hidden", flexShrink: 0 }}>
     <div style={{ padding: sideOpen ? "16px 12px" : "16px 8px", borderBottom: `1px solid ${CL.bd}`, display: "flex", alignItems: "center", gap: 9, cursor: "pointer" }} onClick={() => setSideOpen(!sideOpen)}>
-      <div style={{ width: 30, height: 30, borderRadius: 8, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: CL.bg, flexShrink: 0 }}>LAC</div>
-      {sideOpen && <div><div style={{ fontSize: 13, fontWeight: 700, color: CL.gold, fontFamily: "'Cormorant Garamond', serif", whiteSpace: "nowrap" }}>Lux Angels Cleaning</div><div style={{ fontSize: 10, color: CL.muted }}>{auth.role === "manager" ? t("managerPortal") : t("ownerPortal")}</div></div>}
+      <div style={{ width: 30, height: 30, borderRadius: 8, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: CL.bg, flexShrink: 0 }}>RN</div>
+      {sideOpen && <div><div style={{ fontSize: 13, fontWeight: 700, color: CL.gold, fontFamily: "'Poppins', 'Montserrat', sans-serif", whiteSpace: "nowrap" }}>Ren-Net Cleaning</div><div style={{ fontSize: 10, color: CL.muted }}>{auth.role === "manager" ? t("managerPortal") : t("ownerPortal")}</div></div>}
     </div>
     <nav style={{ flex: 1, padding: "6px 4px", overflowY: "auto" }}>
       {navGroups.map(group => (
@@ -3546,7 +3546,7 @@ if (status === "success") return (
       <LoginLogo lang={lang} />
       <div style={{ ...cardSt, padding: 28, textAlign: "center" }}>
         <div style={{ fontSize: 40, marginBottom: 12 }}>&#x2705;</div>
-        <h3 style={{ margin: "0 0 10px", fontFamily: "'Cormorant Garamond', serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Email verified!" : "Email vérifié !"}</h3>
+        <h3 style={{ margin: "0 0 10px", fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Email verified!" : "Email vérifié !"}</h3>
         <p style={{ color: CL.muted, fontSize: 13, marginBottom: 20 }}>{lang === "en" ? "Your email has been verified. Your account is now awaiting owner approval. You will receive an email once your account is approved." : "Votre email a été vérifié. Votre compte est en attente d'approbation. Vous recevrez un email une fois votre compte approuvé."}</p>
         <button onClick={() => window.location.replace("/")} style={{ ...btnPri, width: "100%", justifyContent: "center" }}>{lang === "en" ? "Go to login" : "Aller à la connexion"}</button>
       </div>
@@ -3560,7 +3560,7 @@ return (
       <LoginLogo lang={lang} />
       <div style={{ ...cardSt, padding: 28, textAlign: "center" }}>
         <div style={{ fontSize: 40, marginBottom: 12 }}>&#x274C;</div>
-        <h3 style={{ margin: "0 0 10px", fontFamily: "'Cormorant Garamond', serif", color: CL.red, fontSize: 21 }}>{lang === "en" ? "Verification failed" : "Échec de la vérification"}</h3>
+        <h3 style={{ margin: "0 0 10px", fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.red, fontSize: 21 }}>{lang === "en" ? "Verification failed" : "Échec de la vérification"}</h3>
         <p style={{ color: CL.muted, fontSize: 13, marginBottom: 20 }}>{error}</p>
         <button onClick={() => window.location.replace("/")} style={{ ...btnPri, width: "100%", justifyContent: "center" }}>{lang === "en" ? "Go to login" : "Aller à la connexion"}</button>
       </div>
@@ -3616,7 +3616,7 @@ if (done) return (
       <LoginLogo lang={lang} />
       <div style={{ ...cardSt, padding: 28, textAlign: "center" }}>
         <div style={{ fontSize: 40, marginBottom: 12 }}>✅</div>
-        <h3 style={{ margin: "0 0 10px", fontFamily: "'Cormorant Garamond', serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Password updated!" : "Mot de passe mis à jour !"}</h3>
+        <h3 style={{ margin: "0 0 10px", fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Password updated!" : "Mot de passe mis à jour !"}</h3>
         <p style={{ color: CL.muted, fontSize: 13, marginBottom: 20 }}>{lang === "en" ? "Your password has been changed. You can now log in with your new password." : "Votre mot de passe a été modifié. Vous pouvez maintenant vous connecter avec votre nouveau mot de passe."}</p>
         <button onClick={() => window.location.replace("/")} style={{ ...btnPri, width: "100%", justifyContent: "center" }}>{lang === "en" ? "Go to login" : "Aller à la connexion"}</button>
       </div>
@@ -3629,7 +3629,7 @@ return (
     <div style={{ animation: "fadeIn .4s ease", width: 420, maxWidth: "100%" }}>
       <LoginLogo lang={lang} />
       <div style={{ ...cardSt, padding: 28 }}>
-        <h3 style={{ margin: "0 0 16px", fontFamily: "'Cormorant Garamond', serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Set new password" : "Définir un nouveau mot de passe"}</h3>
+        <h3 style={{ margin: "0 0 16px", fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Set new password" : "Définir un nouveau mot de passe"}</h3>
         <p style={{ color: CL.muted, fontSize: 13, marginBottom: 16 }}>{lang === "en" ? `Resetting password for ${email}` : `Réinitialisation du mot de passe pour ${email}`}</p>
         <Field label={lang === "en" ? "New password" : "Nouveau mot de passe"}>
           <TextInput type="password" maxLength={64} value={newPassword} autoFocus onChange={ev => { setNewPassword(ev.target.value); setError(""); }} placeholder="••••••••" onKeyDown={ev => ev.key === "Enter" && doReset()} />
@@ -3834,7 +3834,7 @@ if (view === "admin") return (
           <button onClick={goBack} style={{ background: "none", border: "none", color: CL.muted, cursor: "pointer", padding: 4, lineHeight: 0 }}>
             <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
-          <h3 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Admin / Manager Login" : "Connexion Admin / Manager"}</h3>
+          <h3 style={{ margin: 0, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Admin / Manager Login" : "Connexion Admin / Manager"}</h3>
         </div>
         <Field label={lang === "en" ? "Username" : "Identifiant"}>
           <TextInput value={username} onChange={ev => { setUsername(ev.target.value); setError(""); }} placeholder={lang === "en" ? "username or email" : "identifiant ou email"} onKeyDown={ev => ev.key === "Enter" && doAdminLogin()} />
@@ -3862,7 +3862,7 @@ if (view === "agent-pick") return (
           <button onClick={goBack} style={{ background: "none", border: "none", color: CL.muted, cursor: "pointer", padding: 4, lineHeight: 0 }}>
             <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
-          <h3 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Agent Login" : "Connexion Agent"}</h3>
+          <h3 style={{ margin: 0, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Agent Login" : "Connexion Agent"}</h3>
         </div>
         <label style={{ display: "block", fontSize: 12, color: CL.muted, marginBottom: 6, fontWeight: 600, letterSpacing: ".05em", textTransform: "uppercase" }}>
           {lang === "en" ? "Select your username" : "Sélectionnez votre nom d'utilisateur"}
@@ -3904,7 +3904,7 @@ if (view === "agent-pw") return (
           <button onClick={() => { setView("agent-pick"); setError(""); setPassword(""); }} style={{ background: "none", border: "none", color: CL.muted, cursor: "pointer", padding: 4, lineHeight: 0 }}>
             <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
-          <h3 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Agent Login" : "Connexion Agent"}</h3>
+          <h3 style={{ margin: 0, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Agent Login" : "Connexion Agent"}</h3>
         </div>
         {/* Show the selected agent's name/avatar */}
         <div style={{ display: "flex", alignItems: "center", gap: 14, background: `${CL.gold}12`, border: `1px solid ${CL.gold}30`, borderRadius: 12, padding: "14px 16px", marginBottom: 20 }}>
@@ -3940,7 +3940,7 @@ if (view === "forgot-pw") return (
           <button onClick={() => { setView("agent-pw"); setError(""); }} style={{ background: "none", border: "none", color: CL.muted, cursor: "pointer", padding: 4, lineHeight: 0 }}>
             <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
-          <h3 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Reset Password" : "Réinitialiser le mot de passe"}</h3>
+          <h3 style={{ margin: 0, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Reset Password" : "Réinitialiser le mot de passe"}</h3>
         </div>
         <p style={{ color: CL.muted, fontSize: 13, marginBottom: 16 }}>{lang === "en" ? "Enter the email address linked to your agent account. We'll send you a reset link." : "Saisissez l'adresse email liée à votre compte agent. Nous vous enverrons un lien de réinitialisation."}</p>
         <Field label={lang === "en" ? "Email address" : "Adresse email"}>
@@ -3962,7 +3962,7 @@ if (view === "forgot-sent") return (
       <LoginLogo lang={lang} />
       <div style={{ ...cardSt, padding: 28, textAlign: "center" }}>
         <div style={{ fontSize: 40, marginBottom: 12 }}>📧</div>
-        <h3 style={{ margin: "0 0 10px", fontFamily: "'Cormorant Garamond', serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Check your email" : "Vérifiez votre email"}</h3>
+        <h3 style={{ margin: "0 0 10px", fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, fontSize: 21 }}>{lang === "en" ? "Check your email" : "Vérifiez votre email"}</h3>
         <p style={{ color: CL.muted, fontSize: 13, marginBottom: 20 }}>{lang === "en" ? "If that email is linked to an agent account, a reset link has been sent. Check your inbox and click the link within 30 minutes." : "Si cet email est lié à un compte agent, un lien de réinitialisation a été envoyé. Vérifiez votre boîte mail et cliquez sur le lien dans les 30 minutes."}</p>
         <button onClick={goBack} style={{ ...btnPri, width: "100%", justifyContent: "center" }}>{lang === "en" ? "Back to login" : "Retour à la connexion"}</button>
       </div>
@@ -3989,8 +3989,8 @@ const LoginShell = ({ children }) => (
 
 const LoginLogo = ({ lang }) => (
   <div style={{ textAlign: "center", marginBottom: 32 }}>
-    <div style={{ width: 90, height: 90, borderRadius: 28, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", fontSize: 34, fontWeight: 700, color: "#0d0e15", fontFamily: "'Cormorant Garamond', serif", boxShadow: `0 8px 32px ${CL.gold}40` }}>LAC</div>
-    <h1 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: CL.gold, letterSpacing: "0.06em" }}>Lux Angels Cleaning</h1>
+    <div style={{ width: 90, height: 90, borderRadius: 28, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", fontSize: 34, fontWeight: 700, color: "#0d0e15", fontFamily: "'Poppins', 'Montserrat', sans-serif", boxShadow: `0 8px 32px ${CL.gold}40` }}>RN</div>
+    <h1 style={{ margin: 0, fontFamily: "'Poppins', 'Montserrat', sans-serif", fontSize: 26, color: CL.gold, letterSpacing: "0.06em" }}>Ren-Net Cleaning</h1>
     <p style={{ margin: "6px 0 0", fontSize: 13, color: CL.muted, letterSpacing: "0.08em", textTransform: "uppercase" }}>{lang === "en" ? "Management Portal" : "Portail de gestion"}</p>
   </div>
 );
@@ -4242,7 +4242,7 @@ const goCalToday = () => { setCalYear(nowCal.getFullYear()); setCalMonth(nowCal.
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, flexWrap: "wrap", gap: 8 }}>
-  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", color: CL.blue, fontSize: 20, margin: 0 }}>{t("upcomingJobs")}</h2>
+  <h2 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.blue, fontSize: 20, margin: 0 }}>{t("upcomingJobs")}</h2>
   <div style={{ display: "flex", background: CL.s2, border: `1px solid ${CL.bd}`, borderRadius: 8, padding: 2, gap: 2 }}>
     <button style={{ ...btnSec, ...btnSm, background: schedViewMode === "calendar" ? CL.blue : "transparent", border: "none", color: schedViewMode === "calendar" ? "#fff" : CL.muted, padding: "6px 10px", fontSize: 12 }} onClick={() => setSchedViewMode("calendar")}>{ICN.cal} {t("calendarView")}</button>
     <button style={{ ...btnSec, ...btnSm, background: schedViewMode === "list" ? CL.blue : "transparent", border: "none", color: schedViewMode === "list" ? "#fff" : CL.muted, padding: "6px 10px", fontSize: 12 }} onClick={() => setSchedViewMode("list")}>{ICN.doc} {t("listView")}</button>
@@ -4256,7 +4256,7 @@ return (
     <button onClick={prevCalMonth} style={{ ...btnSec, ...btnSm, padding: "6px 12px", fontSize: 16 }}>‹</button>
     <button onClick={goCalToday} style={{ ...btnSec, ...btnSm, fontSize: 12 }}>{uiText("Today")}</button>
     <button onClick={nextCalMonth} style={{ ...btnSec, ...btnSm, padding: "6px 12px", fontSize: 16 }}>›</button>
-    <span style={{ fontSize: 16, fontFamily: "'Cormorant Garamond', serif", color: CL.text, fontWeight: 600, textTransform: "capitalize" }}>{calMonthLabel}</span>
+    <span style={{ fontSize: 16, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.text, fontWeight: 600, textTransform: "capitalize" }}>{calMonthLabel}</span>
   </div>
   {/* Calendar grid */}
   <div style={{ ...cardSt, padding: 8, marginBottom: 12 }}>
@@ -4303,7 +4303,7 @@ return (
   )}
   {calSelectedStr ? (
     <div style={{ ...cardSt }}>
-      <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: CL.gold, fontSize: 17, margin: 0 }}>{fmtDate(calSelectedStr)}</h3>
+      <h3 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, fontSize: 17, margin: 0 }}>{fmtDate(calSelectedStr)}</h3>
       {calSelectedScheds.length === 0 ? (
         <div style={{ textAlign: "center", padding: "20px 0", color: CL.muted, fontSize: 13 }}>{t("noJobsThisDay")}</div>
       ) : calSelectedScheds.map(sched => {
@@ -4365,7 +4365,7 @@ return (
 
     {tab === "clock" && (
       <div>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{uiText("Validate Hours")}</h2>
+        <h2 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{uiText("Validate Hours")}</h2>
         {(() => {
           const today = getToday();
           const todayJobs = data.schedules
@@ -4441,7 +4441,7 @@ return (
     {tab === "hours" && (
       <div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, flexWrap: "wrap", gap: 8 }}>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", color: CL.blue, fontSize: 22 }}>{uiText("My Hours")}</h2>
+          <h2 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.blue, fontSize: 22 }}>{uiText("My Hours")}</h2>
           <TextInput type="month" value={monthFilter} onChange={ev => setMonthFilter(ev.target.value)} style={{ width: 160 }} />
         </div>
         <div className="stat-row" style={{ marginBottom: 18 }}>
@@ -4464,7 +4464,7 @@ return (
 
     {tab === "photos" && (
       <div>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{t("photoUploads")}</h2>
+        <h2 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{t("photoUploads")}</h2>
         <div style={{ ...cardSt, marginBottom: 14 }}>
           <p style={{ fontSize: 12, color: canUploadPhoto ? CL.green : CL.orange, marginBottom: 12 }}>
             {canUploadPhoto
@@ -4507,7 +4507,7 @@ return (
 
     {tab === "products" && (
       <div>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{t("products")}</h2>
+        <h2 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{t("products")}</h2>
         <div className="stat-row" style={{ marginBottom: 14 }}>
           <StatCard label={uiText("Requested")} value={`${myRequestedTotal}`} icon={ICN.doc} color={CL.blue} />
           <StatCard label={uiText("Received")} value={`${myReceivedTotal}`} icon={ICN.check} color={CL.green} />
@@ -4553,7 +4553,7 @@ return (
 
     {tab === "timeoff" && (
       <div>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{t("conges")}</h2>
+        <h2 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{t("conges")}</h2>
         <div className="stat-row" style={{ marginBottom: 14 }}>
           <StatCard label={uiText("Allowance (days)")} value={`${leaveSummary.allowance}d`} icon={ICN.cal} color={CL.blue} />
           <StatCard label={uiText("Approved (days)")} value={`${leaveSummary.approvedDays}d`} icon={ICN.check} color={CL.green} />
@@ -4588,7 +4588,7 @@ return (
 
     {tab === "profile" && (
       <div>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{uiText("My Profile")}</h2>
+        <h2 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.blue, fontSize: 22, marginBottom: 14 }}>{uiText("My Profile")}</h2>
         {/* Profile Picture Card */}
         <div style={{ ...cardSt, marginBottom: 14 }}>
           <h3 style={{ fontSize: 14, fontWeight: 600, marginBottom: 14, color: CL.blue }}>{uiText("Profile Picture")}</h3>
@@ -4702,7 +4702,7 @@ const dashExpDueSoon = (data.expenses || []).filter(exp => exp.isActive !== fals
 
 return (
 <div>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, marginBottom: 5 }}>{uiText("Dashboard")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, marginBottom: 5 }}>{uiText("Dashboard")}</h1>
 <p style={{ color: CL.muted, marginBottom: 18 }}>{new Date().toLocaleDateString(localeForLang(CURRENT_LANG), { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>
 
 {/* Pending alerts */}
@@ -4917,7 +4917,7 @@ const filtered = data.employees.filter(e => {
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>{uiText("Employees")} <span style={{ fontSize: 14, color: CL.muted, fontFamily: "'Outfit', sans-serif", fontWeight: 400 }}>({filtered.length}/{data.employees.length})</span></h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>{uiText("Employees")} <span style={{ fontSize: 14, color: CL.muted, fontFamily: "'Outfit', sans-serif", fontWeight: 400 }}>({filtered.length}/{data.employees.length})</span></h1>
 <button style={btnPri} onClick={() => setModal({ ...emptyEmployee })}>{ICN.plus} {uiText("Add")}</button>
 </div>
 <div style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
@@ -5247,7 +5247,7 @@ const filtered = data.clients.filter(c => {
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>{uiText("Clients")} <span style={{ fontSize: 14, color: CL.muted, fontFamily: "'Outfit', sans-serif", fontWeight: 400 }}>({filtered.length}/{data.clients.length})</span></h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>{uiText("Clients")} <span style={{ fontSize: 14, color: CL.muted, fontFamily: "'Outfit', sans-serif", fontWeight: 400 }}>({filtered.length}/{data.clients.length})</span></h1>
 <button style={btnPri} onClick={() => setModal({ ...emptyClient })}>{ICN.plus} {uiText("Add")}</button>
 </div>
 <div style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
@@ -5902,7 +5902,7 @@ showToast(err?.message || "Unable to update payment status", "error");
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>{uiText("Schedule")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>{uiText("Schedule")}</h1>
 <button style={btnPri} onClick={() => setModal({ ...emptySchedule })}>{ICN.plus} {uiText("New Job")}</button>
 </div>
 
@@ -5913,7 +5913,7 @@ return (
 <button onClick={goTomorrow} style={{ ...btnSec, ...btnSm }}>{uiText("Tomorrow")}</button>
 <button onClick={goNextWeek} style={{ ...btnSec, ...btnSm }}>{uiText("Next Week")}</button>
 <button onClick={nextMonth} style={{ ...btnSec, ...btnSm, padding: "8px 14px", fontSize: 16 }}>›</button>
-<h2 style={{ margin: 0, fontSize: 20, fontFamily: "'Cormorant Garamond', serif", color: CL.text, marginLeft: 8 }}>{monthLabel}</h2>
+<h2 style={{ margin: 0, fontSize: 20, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.text, marginLeft: 8 }}>{monthLabel}</h2>
 </div>
 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
 <div style={{ display: "flex", background: CL.s2, border: `1px solid ${CL.bd}`, borderRadius: 8, padding: 2 }}>
@@ -6016,7 +6016,7 @@ return <div key={sched.id} className="cal-evt" style={{ background: statusColor 
 <div style={cardSt}>
 {selectedDate ? (<>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-<h3 style={{ fontSize: 15, fontWeight: 600, color: CL.gold, fontFamily: "'Cormorant Garamond', serif", margin: 0 }}>{fmtDate(selectedDateStr)}</h3>
+<h3 style={{ fontSize: 15, fontWeight: 600, color: CL.gold, fontFamily: "'Poppins', 'Montserrat', sans-serif", margin: 0 }}>{fmtDate(selectedDateStr)}</h3>
 <button style={{ ...btnPri, ...btnSm, background: CL.green }} onClick={() => setModal({ ...emptySchedule, date: selectedDateStr })}>{ICN.plus} Add</button>
 </div>
 {selectedHoliday && (
@@ -6425,7 +6425,7 @@ return empA.localeCompare(empB) || `${a.startTime}`.localeCompare(`${b.startTime
 
 return (
 <div>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, marginBottom: 16 }}>{uiText("Time Clock")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, marginBottom: 16 }}>{uiText("Time Clock")}</h1>
 
   {/* Validate scheduled jobs */}
   <div style={{ ...cardSt, marginBottom: 16 }}>
@@ -6741,7 +6741,7 @@ showToast("Products delivered");
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>{uiText("Inventory")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>{uiText("Inventory")}</h1>
 </div>
 
 <div className="grid-2" style={{ marginBottom: 16 }}>
@@ -7140,7 +7140,7 @@ showToast("Devis converti en facture");
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>{t("devis")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>{t("devis")}</h1>
 <button style={btnPri} onClick={() => setModal(newQuoteDraft())}>{ICN.plus} {t("newQuote")}</button>
 </div>
 <div style={cardSt} className="tbl-wrap">
@@ -7427,7 +7427,7 @@ return (
   <div style={{ background: CL.bg, border: `1px solid ${CL.bd}`, borderRadius: 12, padding: "16px 20px", marginTop: 16, textAlign: "right" }}>
     <div style={{ fontSize: 13, color: CL.muted, marginBottom: 4 }}>Sous-total : <strong style={{ color: CL.text }}>€{subtotal.toFixed(2)}</strong></div>
     {form.visibleColumns?.tva !== false && <div style={{ fontSize: 13, color: CL.muted, marginBottom: 6 }}>TVA ({form.vatRate}%) : <strong style={{ color: CL.text }}>€{vatAmount.toFixed(2)}</strong></div>}
-    <div style={{ fontSize: 22, fontWeight: 700, color: CL.gold, fontFamily: "'Cormorant Garamond', serif" }}>Total : €{(subtotal + (form.visibleColumns?.tva === false ? 0 : vatAmount)).toFixed(2)}</div>
+    <div style={{ fontSize: 22, fontWeight: 700, color: CL.gold, fontFamily: "'Poppins', 'Montserrat', sans-serif" }}>Total : €{(subtotal + (form.visibleColumns?.tva === false ? 0 : vatAmount)).toFixed(2)}</div>
   </div>
 
   {/* ── Section 4: Notes ── */}
@@ -7543,7 +7543,7 @@ if (shouldEmail) {
   const body = buildEmailBody(inv, client, template, lang);
   const subject = newStatus === "overdue"
     ? (lang === "fr" ? `Relance — Facture ${inv.invoiceNumber}` : `Overdue: Invoice ${inv.invoiceNumber}`)
-    : (lang === "fr" ? `Facture ${inv.invoiceNumber} — Lux Angels` : `Invoice ${inv.invoiceNumber} — Lux Angels`);
+    : (lang === "fr" ? `Facture ${inv.invoiceNumber} — Ren-Net` : `Invoice ${inv.invoiceNumber} — Ren-Net`);
 
   await sendPlatformEmail({ to: client.email, subject, body, attachments: pdfAttachments }, { showToast, lang });
 }
@@ -7703,7 +7703,7 @@ if (l === "fr") {
     return `Bonjour ${name},\n\nVeuillez trouver ci-joint votre facture ${invNum} pour les services de nettoyage du ${dateStr}.\nMontant dû : ${amount}${dueStr ? `\nDate d'échéance : ${dueStr}` : ""}\n\nN'hésitez pas à nous contacter si vous avez des questions.${sig}`;
   }
   if (template === "thank_you") {
-    return `Chère/Cher ${name},\n\nNous vous remercions de votre confiance envers ${data.settings.companyName || "Lux Angels Cleaning"} !\n\nVeuillez trouver ci-joint la facture ${invNum} du ${dateStr}.\nTotal : ${amount}\n\nNous vous remercions et restons à votre disposition pour toute question.${sig}`;
+    return `Chère/Cher ${name},\n\nNous vous remercions de votre confiance envers ${data.settings.companyName || "Ren-Net Cleaning"} !\n\nVeuillez trouver ci-joint la facture ${invNum} du ${dateStr}.\nTotal : ${amount}\n\nNous vous remercions et restons à votre disposition pour toute question.${sig}`;
   }
   if (template === "overdue") {
     return `Chère/Cher ${name},\n\nNous vous rappelons que la facture ${invNum} du ${dateStr} est toujours en attente de règlement.\nMontant restant dû : ${amount}${dueStr ? `\nDate d'échéance dépassée : ${dueStr}` : ""}\n\nNous vous prions de bien vouloir procéder au paiement dans les meilleurs délais. Contactez-nous si vous avez déjà effectué ce virement.${sig}`;
@@ -7715,7 +7715,7 @@ if (template === "friendly") {
   return `Hello ${name},\n\nPlease find your invoice ${invNum} for cleaning services on ${dateStr}.\nAmount due: ${amount}${dueStr ? `\nDue date: ${dueStr}` : ""}\n\nFeel free to reach out if you have any questions.${sig}`;
 }
 if (template === "thank_you") {
-  return `Dear ${name},\n\nThank you for choosing ${data.settings.companyName || "Lux Angels Cleaning"}!\n\nPlease find attached invoice ${invNum} dated ${dateStr}.\nTotal: ${amount}\n\nWe appreciate your trust and look forward to serving you again.${sig}`;
+  return `Dear ${name},\n\nThank you for choosing ${data.settings.companyName || "Ren-Net Cleaning"}!\n\nPlease find attached invoice ${invNum} dated ${dateStr}.\nTotal: ${amount}\n\nWe appreciate your trust and look forward to serving you again.${sig}`;
 }
 if (template === "overdue") {
   return `Dear ${name},\n\nThis is a reminder that invoice ${invNum} dated ${dateStr} is now overdue.\nOutstanding amount: ${amount}${dueStr ? `\nDue date: ${dueStr}` : ""}\n\nPlease arrange payment at your earliest convenience. Contact us if you have already settled this invoice.${sig}`;
@@ -7784,7 +7784,7 @@ const hasFilters = filters.invoiceNumber || filters.clientId || filters.status |
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>{t("invoices")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>{t("invoices")}</h1>
 <button style={btnPri} onClick={() => setModal({ clientId: "", date: getToday(), dueDate: "", invoiceNumber: nextInvoiceNum(), items: [{ prestationDate: getToday(), description: "", hours: "", quantity: 1, unitPrice: 0, total: 0 }], visibleColumns: { prestationDate: true, description: true, hours: true, quantity: false, unitPrice: true, total: true, tva: true }, subtotal: 0, vatRate: Number(data.settings.financeVatRate ?? data.settings.defaultVatRate ?? 17), vatAmount: 0, total: 0, status: "draft", notes: "", paymentTerms: data.settings.paymentTermsDays || "Payment due within 30 days.", emailTemplate: "standard", zohoEmail: data.settings.companyEmail || "" })}>{ICN.plus} {t("newInvoice")}</button>
 </div>
 <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12, alignItems: "flex-end" }}>
@@ -8107,7 +8107,7 @@ return (
   <div style={{ background: CL.bg, border: `1px solid ${CL.bd}`, borderRadius: 12, padding: "16px 20px", marginTop: 16, textAlign: "right" }}>
     <div style={{ fontSize: 13, color: CL.muted, marginBottom: 4 }}>Sous-total : <strong style={{ color: CL.text }}>€{subtotal.toFixed(2)}</strong></div>
     {form.visibleColumns?.tva !== false && <div style={{ fontSize: 13, color: CL.muted, marginBottom: 6 }}>TVA ({form.vatRate}%) : <strong style={{ color: CL.text }}>€{vatAmount.toFixed(2)}</strong></div>}
-    <div style={{ fontSize: 22, fontWeight: 700, color: CL.gold, fontFamily: "'Cormorant Garamond', serif" }}>Total : €{(subtotal + (form.visibleColumns?.tva === false ? 0 : vatAmount)).toFixed(2)}</div>
+    <div style={{ fontSize: 22, fontWeight: 700, color: CL.gold, fontFamily: "'Poppins', 'Montserrat', sans-serif" }}>Total : €{(subtotal + (form.visibleColumns?.tva === false ? 0 : vatAmount)).toFixed(2)}</div>
   </div>
 
   {/* ── Section 4: Email & Terms ── */}
@@ -8131,7 +8131,7 @@ function InvoicePreviewContent({ invoice, data, isQuote = false }) {
 const client = data.clients.find(c => c.id === invoice.clientId);
 const settings = data.settings;
 const cols = { prestationDate: true, description: true, hours: true, quantity: false, unitPrice: true, total: true, tva: true, ...(invoice.visibleColumns || {}) };
-const companyDisplay = settings.companyName || "Lux Angels Cleaning";
+const companyDisplay = settings.companyName || "Ren-Net Cleaning";
 const docLabel = isQuote ? "DEVIS" : "FACTURE";
 return (
 <div style={{ background: "#fff", color: "#1a1a1a", padding: 36, borderRadius: 8, fontFamily: "'Outfit', sans-serif" }}>
@@ -8140,7 +8140,7 @@ return (
   <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
     {settings.companyLogo && <img src={settings.companyLogo} alt="logo" style={{ width: 56, height: 56, borderRadius: 8, objectFit: "cover" }} />}
     <div>
-      <h1 style={{ fontSize: 26, fontWeight: 700, color: "#C9A84C", fontFamily: "'Cormorant Garamond', serif", margin: 0, letterSpacing: "0.01em" }}>{companyDisplay}</h1>
+      <h1 style={{ fontSize: 26, fontWeight: 700, color: "#2EA3F2", fontFamily: "'Poppins', 'Montserrat', sans-serif", margin: 0, letterSpacing: "0.01em" }}>{companyDisplay}</h1>
       <div style={{ fontSize: 11, color: "#666", marginTop: 4, lineHeight: 1.7 }}>
         {settings.companyAddress}<br />
         {settings.companyEmail}<br />
@@ -8173,7 +8173,7 @@ return (
 <div style={{ overflowX: "auto" }}>
   <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: 18 }}>
     <thead>
-      <tr style={{ borderBottom: "2px solid #C9A84C" }}>
+      <tr style={{ borderBottom: "2px solid #2EA3F2" }}>
         <th style={{ textAlign: "left", padding: "6px 4px 6px 0", fontSize: 10, color: "#999", fontWeight: 600 }}>Ref</th>
         {cols.prestationDate && <th style={{ textAlign: "left", padding: "6px 4px", fontSize: 10, color: "#999", fontWeight: 600 }}>Date</th>}
         {cols.description && <th style={{ textAlign: "left", padding: "6px 4px", fontSize: 10, color: "#999", fontWeight: 600 }}>Désignation</th>}
@@ -8203,7 +8203,7 @@ return (
 <div style={{ textAlign: "right", marginBottom: 20, borderTop: "1px solid #eee", paddingTop: 12 }}>
   <div style={{ fontSize: 12, color: "#666", marginBottom: 3 }}>TOTAL HT: <strong>€{(invoice.subtotal || 0).toFixed(2)}</strong></div>
   {cols.tva !== false && <div style={{ fontSize: 12, color: "#666", marginBottom: 3 }}>TVA ({invoice.vatRate}%): <strong>€{(invoice.vatAmount || 0).toFixed(2)}</strong></div>}
-  <div style={{ fontSize: 22, fontWeight: 700, color: "#C9A84C", marginTop: 8, fontFamily: "'Cormorant Garamond', serif" }}>TOTAL TTC: €{(invoice.total || 0).toFixed(2)}</div>
+  <div style={{ fontSize: 22, fontWeight: 700, color: "#2EA3F2", marginTop: 8, fontFamily: "'Poppins', 'Montserrat', sans-serif" }}>TOTAL TTC: €{(invoice.total || 0).toFixed(2)}</div>
 </div>
 
 {/* Payment terms + IBAN (only on invoices) */}
@@ -8222,8 +8222,8 @@ return (
   {/* Company signature */}
   <div style={{ flex: 1, minWidth: 200, textAlign: "right" }}>
     <div style={{ fontSize: 11, color: "#555", marginBottom: 6 }}>Signature autorisée :</div>
-    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "#C9A84C", fontWeight: 700, fontStyle: "italic", marginBottom: 2 }}>{companyDisplay}</div>
-    <div style={{ borderTop: "1px solid #C9A84C", paddingTop: 4, fontSize: 10, color: "#999", display: "inline-block", marginTop: 4 }}>Direction — {companyDisplay} S.à r.l.</div>
+    <div style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", fontSize: 22, color: "#2EA3F2", fontWeight: 700, fontStyle: "italic", marginBottom: 2 }}>{companyDisplay}</div>
+    <div style={{ borderTop: "1px solid #2EA3F2", paddingTop: 4, fontSize: 10, color: "#999", display: "inline-block", marginTop: 4 }}>Direction — {companyDisplay} S.à r.l.</div>
   </div>
 </div>
 
@@ -8412,7 +8412,7 @@ showToast(err?.message || "Unable to update payslip", "error");
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>Payslips</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>Payslips</h1>
 <div style={{ display: "flex", gap: 10, alignItems: "flex-end", flexWrap: "wrap", padding: 10, borderRadius: 12, border: `1px solid ${CL.bd}`, background: CL.sf }}>
   <div>
     <label style={{ display: "block", fontSize: 11, color: CL.muted, marginBottom: 4 }}>From</label>
@@ -8476,7 +8476,7 @@ return (
           <div style={{ background: "#fff", color: "#1a1a1a", padding: 28, borderRadius: 8, fontFamily: "'Outfit', sans-serif" }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 18, flexWrap: "wrap", gap: 12 }}>
               <div>
-                <h1 style={{ fontSize: 22, fontWeight: 700, color: "#C9A84C", fontFamily: "'Cormorant Garamond', serif", margin: 0 }}>{settings.companyName || "Lux Angels Cleaning"}</h1>
+                <h1 style={{ fontSize: 22, fontWeight: 700, color: "#2EA3F2", fontFamily: "'Poppins', 'Montserrat', sans-serif", margin: 0 }}>{settings.companyName || "Ren-Net Cleaning"}</h1>
                 <div style={{ fontSize: 10, color: "#666", marginTop: 2 }}>{settings.companyAddress}</div>
               </div>
               <div style={{ textAlign: "right" }}>
@@ -8497,8 +8497,8 @@ return (
               <tbody>
                 <tr style={{ borderBottom: "1px solid #eee" }}><td style={{ padding: "7px 0", color: "#666", fontSize: 13 }}>Heures travaillées</td><td style={{ padding: "7px 0", textAlign: "right", fontWeight: 600 }}>{preview.totalHours}h</td></tr>
                 <tr style={{ borderBottom: "1px solid #eee" }}><td style={{ padding: "7px 0", color: "#666", fontSize: 13 }}>Taux horaire</td><td style={{ padding: "7px 0", textAlign: "right" }}>€{preview.hourlyRate?.toFixed(2)}/h</td></tr>
-                <tr style={{ borderBottom: "2px solid #C9A84C" }}><td style={{ padding: "7px 0", fontWeight: 600, fontSize: 13 }}>Salaire brut</td><td style={{ padding: "7px 0", textAlign: "right", fontWeight: 600 }}>€{preview.grossPay?.toFixed(2)}</td></tr>
-                <tr><td style={{ padding: "10px 0", fontSize: 18, fontWeight: 700, color: "#C9A84C", fontFamily: "'Cormorant Garamond', serif" }}>TOTAL BRUT</td><td style={{ padding: "10px 0", textAlign: "right", fontSize: 18, fontWeight: 700, color: "#C9A84C" }}>€{preview.grossPay?.toFixed(2)}</td></tr>
+                <tr style={{ borderBottom: "2px solid #2EA3F2" }}><td style={{ padding: "7px 0", fontWeight: 600, fontSize: 13 }}>Salaire brut</td><td style={{ padding: "7px 0", textAlign: "right", fontWeight: 600 }}>€{preview.grossPay?.toFixed(2)}</td></tr>
+                <tr><td style={{ padding: "10px 0", fontSize: 18, fontWeight: 700, color: "#2EA3F2", fontFamily: "'Poppins', 'Montserrat', sans-serif" }}>TOTAL BRUT</td><td style={{ padding: "10px 0", textAlign: "right", fontSize: 18, fontWeight: 700, color: "#2EA3F2" }}>€{preview.grossPay?.toFixed(2)}</td></tr>
               </tbody>
             </table>
             <div style={{ marginBottom: 18 }}>
@@ -8534,8 +8534,8 @@ return (
             <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 12 }}>
               <div style={{ textAlign: "right" }}>
                 <div style={{ fontSize: 11, color: "#555", marginBottom: 6 }}>Signature de l'employeur :</div>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, color: "#C9A84C", fontWeight: 700, fontStyle: "italic", marginBottom: 2 }}>{settings.companyName || "Lux Angels Cleaning"}</div>
-                <div style={{ borderTop: "1px solid #C9A84C", paddingTop: 4, fontSize: 10, color: "#999", display: "inline-block" }}>Direction — {settings.companyName || "Lux Angels Cleaning"} S.à r.l.</div>
+                <div style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", fontSize: 20, color: "#2EA3F2", fontWeight: 700, fontStyle: "italic", marginBottom: 2 }}>{settings.companyName || "Ren-Net Cleaning"}</div>
+                <div style={{ borderTop: "1px solid #2EA3F2", paddingTop: 4, fontSize: 10, color: "#999", display: "inline-block" }}>Direction — {settings.companyName || "Ren-Net Cleaning"} S.à r.l.</div>
               </div>
             </div>
           </div>
@@ -8612,7 +8612,7 @@ const removeVisit = async (id) => {
 
 return (
 <div>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, marginBottom: 16 }}>{t("visitationSchedule")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, marginBottom: 16 }}>{t("visitationSchedule")}</h1>
 <div style={{ ...cardSt, marginBottom: 14 }}>
   <div className="form-grid">
     <Field label={uiText("Client")}>
@@ -8752,7 +8752,7 @@ const markAllSeen = async () => {
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, flexWrap: "wrap", gap: 8 }}>
-  <h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>{t("historyImages")}</h1>
+  <h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>{t("historyImages")}</h1>
   <button style={btnSec} onClick={markAllSeen}>{uiText("Mark images seen")}</button>
 </div>
 
@@ -8871,7 +8871,7 @@ useEffect(() => {
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>{uiText("Congés")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>{uiText("Congés")}</h1>
 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
 <SelectInput value={employeeFilter} onChange={ev => setEmployeeFilter(ev.target.value)} style={{ width: 180 }}>
 <option value="">{uiText("All Cleaners")}</option>
@@ -8983,8 +8983,8 @@ const [showClientPicker, setShowClientPicker] = useState(false);
 // ── Campaign state ────────────────────────────────
 const [campaignFrequency, setCampaignFrequency] = useState("weekly");
 const [campaignChannel, setCampaignChannel] = useState("zoho");
-const [campaignSubject, setCampaignSubject] = useState(lang === "fr" ? "Actualités Lux Angels" : "Lux Angels update");
-const [campaignBody, setCampaignBody] = useState(lang === "fr" ? "Bonjour, voici notre communication périodique de la part de Lux Angels Cleaning." : "Hello, this is your scheduled client communication from Lux Angels.");
+const [campaignSubject, setCampaignSubject] = useState(lang === "fr" ? "Actualités Ren-Net" : "Ren-Net update");
+const [campaignBody, setCampaignBody] = useState(lang === "fr" ? "Bonjour, voici notre communication périodique de la part de Ren-Net Cleaning." : "Hello, this is your scheduled client communication from Ren-Net.");
 
 // ── Notification rules state ──────────────────────
 const [audienceTab, setAudienceTab] = useState("owner_manager");
@@ -9380,7 +9380,7 @@ const renderAudienceConfigurator = ({ title, description, channelsState, onToggl
 return (
 <div>
   {/* Page header */}
-  <h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, marginBottom: 4 }}>
+  <h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, marginBottom: 4 }}>
     {lang === "fr" ? "Centre de communications" : "Communication Center"}
   </h1>
   <p style={{ color: CL.muted, marginBottom: 16, fontSize: 13 }}>
@@ -9675,7 +9675,7 @@ const margin = totalRevenue > 0 ? (profit / totalRevenue * 100) : 0;
 return (
 <div>
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold }}>{uiText("Reports")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold }}>{uiText("Reports")}</h1>
 <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
   <TextInput type="month" value={month} onChange={ev => setMonth(ev.target.value)} style={{ width: 160 }} />
   <button className="no-print" style={{ ...btnSec, ...btnSm }} onClick={() => window.print()} title="Print report">{ICN.download} Print</button>
@@ -9747,18 +9747,18 @@ ev.target.value = "";
 
 return (
 <div>
-<h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, marginBottom: 5 }}>{uiText("Excel Database")}</h1>
+<h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, marginBottom: 5 }}>{uiText("Excel Database")}</h1>
 <p style={{ color: CL.muted, marginBottom: 20 }}>{uiText("Full backup/restore with structured 8-sheet Excel file.")}</p>
 <div className="grid-2" style={{ marginBottom: 20 }}>
 <div style={{ ...cardSt, textAlign: "center", padding: 28 }}>
 <div style={{ width: 56, height: 56, borderRadius: 16, background: CL.green + "15", display: "flex", alignItems: "center", justifyContent: "center", color: CL.green, margin: "0 auto 12px" }}>{ICN.download}</div>
-<h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, color: CL.green, marginBottom: 6 }}>{uiText("Export Database")}</h3>
+<h3 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", fontSize: 18, color: CL.green, marginBottom: 6 }}>{uiText("Export Database")}</h3>
 <p style={{ color: CL.muted, fontSize: 12, marginBottom: 14 }}>8 sheets: Employees, Clients, Schedule, Time Clock, Invoices, Payslips, Settings, Summary</p>
 <button style={{ ...btnPri, background: CL.green, justifyContent: "center", width: "100%" }} onClick={doExport}>{exporting ? uiText("Exporting...") : uiText("Export .xlsx")}</button>
 </div>
 <div style={{ ...cardSt, textAlign: "center", padding: 28 }}>
 <div style={{ width: 56, height: 56, borderRadius: 16, background: CL.blue + "15", display: "flex", alignItems: "center", justifyContent: "center", color: CL.blue, margin: "0 auto 12px" }}>{ICN.excel}</div>
-<h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, color: CL.blue, marginBottom: 6 }}>{uiText("Import Database")}</h3>
+<h3 style={{ fontFamily: "'Poppins', 'Montserrat', sans-serif", fontSize: 18, color: CL.blue, marginBottom: 6 }}>{uiText("Import Database")}</h3>
 <p style={{ color: CL.muted, fontSize: 12, marginBottom: 14 }}>{uiText("Upload a previously exported Excel file to restore all data.")}</p>
 <input type="file" accept=".xlsx,.xls" ref={fileRef} onChange={doImport} style={{ display: "none" }} />
 <button style={{ ...btnPri, background: CL.blue, justifyContent: "center", width: "100%" }} onClick={() => fileRef.current?.click()}>{uiText("Import .xlsx")}</button>
@@ -9861,7 +9861,7 @@ function PasswordResetTab({ data, showToast, ownerUsername, managerUsername }) {
 
   return (
     <div style={{ marginTop: 14 }}>
-      <h3 style={{ color: CL.gold, marginTop: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 20 }}>Password & PIN Reset</h3>
+      <h3 style={{ color: CL.gold, marginTop: 0, fontFamily: "'Poppins', 'Montserrat', sans-serif", fontSize: 20 }}>Password & PIN Reset</h3>
       <p style={{ color: CL.muted, marginBottom: 18, fontSize: 13 }}>Reset access credentials for any user. Changes take effect immediately on the next login.</p>
 
       {/* Owner */}
@@ -10115,7 +10115,7 @@ const tabs = [
 
 return (
 <div>
-  <h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, marginBottom: 10 }}>{uiText("Settings Control Panel")}</h1>
+  <h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, marginBottom: 10 }}>{uiText("Settings Control Panel")}</h1>
   <p style={{ color: CL.muted, marginBottom: 14 }}>{uiText("Configure company identity, access rights, finance, planning, time tracking, stock and system behavior.")}</p>
   <FormTabs tabs={tabs} active={activeTab} onChange={setActiveTab} />
 
@@ -10448,7 +10448,7 @@ function DownloadAppPage({ onInstallApp }) {
   const { t } = useI18n();
   return (
     <div>
-      <h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, marginBottom: 8 }}>{t("downloadApp")}</h1>
+      <h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, marginBottom: 8 }}>{t("downloadApp")}</h1>
       <p style={{ color: CL.muted, marginBottom: 12 }}>{t("installIntro")}</p>
       <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
         <button style={{ ...btnPri, background: CL.gold }} onClick={() => onInstallApp("ios")}>{ICN.download} {t("installOnIphone")}</button>
@@ -10582,7 +10582,7 @@ function ExpensesPage({ data, updateData, showToast }) {
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 20 }}>
         <div>
-          <h1 style={{ fontSize: 26, fontFamily: "'Cormorant Garamond', serif", color: CL.gold, marginBottom: 4, display: "flex", alignItems: "center", gap: 10 }}>
+          <h1 style={{ fontSize: 26, fontFamily: "'Poppins', 'Montserrat', sans-serif", color: CL.gold, marginBottom: 4, display: "flex", alignItems: "center", gap: 10 }}>
             {ICN.wallet} {uiText("Expenses")}
           </h1>
           <p style={{ color: CL.muted, fontSize: 13 }}>{uiText("Track and manage your monthly business expenses")}</p>
@@ -10595,7 +10595,7 @@ function ExpensesPage({ data, updateData, showToast }) {
       {/* Month Selector */}
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
         <button style={{ ...btnSec, ...btnSm, padding: "7px 14px", fontSize: 18, lineHeight: 1 }} onClick={prevMonth}>‹</button>
-        <div style={{ fontSize: 16, fontWeight: 600, color: CL.text, minWidth: 180, textAlign: "center", fontFamily: "'Cormorant Garamond', serif" }}>{fmtMonthLabel(viewMonth)}</div>
+        <div style={{ fontSize: 16, fontWeight: 600, color: CL.text, minWidth: 180, textAlign: "center", fontFamily: "'Poppins', 'Montserrat', sans-serif" }}>{fmtMonthLabel(viewMonth)}</div>
         <button style={{ ...btnSec, ...btnSm, padding: "7px 14px", fontSize: 18, lineHeight: 1 }} onClick={nextMonth}>›</button>
         {!isCurrentMonth && (
           <button style={{ ...btnSec, ...btnSm }} onClick={() => setViewMonth(getToday().slice(0, 7))}>
@@ -10656,7 +10656,7 @@ function ExpensesPage({ data, updateData, showToast }) {
       {/* Expenses Table */}
       <div style={cardSt}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-          <h3 style={{ fontSize: 15, fontWeight: 600, color: CL.gold, fontFamily: "'Cormorant Garamond', serif" }}>
+          <h3 style={{ fontSize: 15, fontWeight: 600, color: CL.gold, fontFamily: "'Poppins', 'Montserrat', sans-serif" }}>
             {uiText("Expense List")} <span style={{ color: CL.muted, fontWeight: 400, fontSize: 13 }}>({activeExpenses.length})</span>
           </h3>
           <div style={{ fontSize: 11, color: CL.dim }}>{uiText("Sorted by urgency · overdue first")}</div>
@@ -11017,7 +11017,7 @@ function MarkPaidModal({ expense, viewMonth, onSave, onClose }) {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
             <div>
               <div style={{ fontSize: 12, color: CL.muted, marginBottom: 2 }}>{uiText("Expense")}</div>
-              <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "'Cormorant Garamond', serif" }}>{expense.name}</div>
+              <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "'Poppins', 'Montserrat', sans-serif" }}>{expense.name}</div>
             </div>
             <div>
               <div style={{ fontSize: 12, color: CL.muted, marginBottom: 2 }}>{uiText("Expected Amount")}</div>

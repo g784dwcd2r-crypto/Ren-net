@@ -6,7 +6,7 @@ databases:
 
 services:
   - type: web
-    name: luxangelsyamyam-api
+    name: ren-net-api
     env: node
     plan: free
     rootDir: backend
@@ -24,12 +24,12 @@ services:
       - key: NODE_ENV
         value: production
       - key: FRONTEND_URL
-        value: https://luxangelsyamyamyam.onrender.com
+        value: https://ren-net.onrender.com
       - key: PGSSLMODE
         value: "true"
 
   - type: web
-    name: Luxangelsyamyamyam
+    name: ren-net
     env: static
     plan: free
     rootDir: frontend
@@ -38,7 +38,7 @@ services:
     autoDeploy: true
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://luxangelsyamyam-api.onrender.com
+        value: https://ren-net-api.onrender.com
     routes:
       - type: rewrite
         source: /*

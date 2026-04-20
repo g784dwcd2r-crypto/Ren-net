@@ -1,4 +1,4 @@
--- Lux Angels Cleaning Management System — PostgreSQL Schema
+-- Ren-Net Cleaning Management System — PostgreSQL Schema
 
 CREATE TABLE IF NOT EXISTS employees (
   id               TEXT PRIMARY KEY,
@@ -330,16 +330,16 @@ END $$;
 
 -- Seed default settings
 INSERT INTO settings (key, value) VALUES
-  ('companyName',    'Lux Angels Cleaning'),
-  ('companyAddress', '12 Rue de la Liberté, L-1930 Luxembourg'),
-  ('companyEmail',   'info@luxangels.lu'),
-  ('companyPhone',   '+352 123 456'),
+  ('companyName',    'Ren-Net S.à.r.l.'),
+  ('companyAddress', '60 Grand-Rue, L-8510 Redange/Attert, Luxembourg'),
+  ('companyEmail',   'info@ren-net.lu'),
+  ('companyPhone',   '+352 26 62 17 88'),
   ('vatNumber',      'LU12345678'),
   ('bankIban',       'LU12 3456 7890 1234 5678'),
   ('defaultVatRate', '17'),
-  ('ownerUsername',  'LuxAdmin'),
-  ('ownerEmail',     'owner@luxangels.lu'),
-  ('ownerPin',       'LuxAngels@2025'),
+  ('ownerUsername',  'RenNetAdmin'),
+  ('ownerEmail',     'owner@ren-net.lu'),
+  ('ownerPin',       'RenNet@2025'),
   ('managerUsername','manager'),
   ('managerPin',     'Manager@2025'),
   ('owner_lang',     'fr'),

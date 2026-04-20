@@ -1,12 +1,12 @@
 {
-  "name": "LAC Lux Angels Cleaning",
-  "short_name": "Lux Angels",
-  "description": "Lux Angels Cleaning management app",
+  "name": "Ren-Net Cleaning",
+  "short_name": "Ren-Net",
+  "description": "Ren-Net cleaning services management app",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0B1020",
-  "theme_color": "#D4AF37",
+  "background_color": "#FFFFFF",
+  "theme_color": "#2EA3F2",
   "icons": [
     {
       "src": "/icons/icon-192.svg",

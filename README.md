@@ -1,4 +1,4 @@
-# LAC Lux angels cleaning Management System
+# LAC Ren-Net Cleaning Management System
 
 A full-stack cleaning business management app built with **React (Vite)** + **Node.js/Express** + **PostgreSQL**.
 
@@ -7,7 +7,7 @@ A full-stack cleaning business management app built with **React (Vite)** + **No
 ## Project Structure
 
 ```
-Luxangelsyamyam/
+Ren-Net/
 ├── frontend/          ← React 18 + Vite SPA (all pages in src/App.jsx)
 │   ├── src/
 │   │   ├── App.jsx    ← Main application component
@@ -47,7 +47,7 @@ Luxangelsyamyam/
 
 | Role   | Default PIN |
 |--------|-------------|
-| Owner  | `LuxAngels@2025` |
+| Owner  | `RenNet@2025` |
 | Manager| `Manager@2025` |
 | Cleaner| `0000` |
 
@@ -59,12 +59,12 @@ These can be changed from the Settings page (owner) or by the owner via the empl
 
 1. Create a PostgreSQL database:
    ```sql
-   CREATE DATABASE luxangels;
+   CREATE DATABASE rennet;
    ```
 
 2. Run the schema (creates all tables + seeds default settings):
    ```bash
-   psql -d luxangels -f backend/schema.sql
+   psql -d rennet -f backend/schema.sql
    ```
 
 3. (Optional) Verify DB/API connectivity:
@@ -115,7 +115,7 @@ npm run dev
 
 | Variable       | Description                                      | Default                                            |
 |----------------|--------------------------------------------------|----------------------------------------------------|
-| `DATABASE_URL` | PostgreSQL connection string (**required**)      | `postgresql://user:password@localhost:5432/luxangels` |
+| `DATABASE_URL` | PostgreSQL connection string (**required**)      | `postgresql://user:password@localhost:5432/rennet` |
 | `PORT`         | Port the API server listens on                   | `5000`                                             |
 | `EMAIL_PROVIDER` | Email provider (`zeptomail` or `resend`)      | _(auto-detect from keys)_                          |
 | `ZEPTO_API_TOKEN`| Zoho ZeptoMail API token (if using ZeptoMail)  | _(empty)_                                          |

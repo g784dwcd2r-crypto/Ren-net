@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Email functionality test script for Lux Angels backend.
+ * Email functionality test script for Ren-Net backend.
  * Tests email gateway detection, token hashing, and optionally sends a real test email.
  * Usage: node test-email.js [recipient@example.com]
  *
@@ -237,7 +237,7 @@ function testEmailTemplates() {
       case 'friendly':
         return `Hello ${clientName},\n\nPlease find your invoice ${invoiceNumber} for cleaning services on ${invoiceDate}.\nAmount due: €${totalAmount}\n\nFeel free to reach out if you have any questions.`;
       case 'thankyou':
-        return `Dear ${clientName},\n\nThank you for choosing Lux Angels Cleaning!\n\nPlease find attached invoice ${invoiceNumber} dated ${invoiceDate}.\nTotal: €${totalAmount}\n\nWe appreciate your trust and look forward to serving you again.`;
+        return `Dear ${clientName},\n\nThank you for choosing Ren-Net Cleaning!\n\nPlease find attached invoice ${invoiceNumber} dated ${invoiceDate}.\nTotal: €${totalAmount}\n\nWe appreciate your trust and look forward to serving you again.`;
       case 'overdue':
         return `Dear ${clientName},\n\nThis is a reminder that invoice ${invoiceNumber} dated ${invoiceDate} is now overdue.\nOutstanding amount: €${totalAmount}\n\nPlease arrange payment at your earliest convenience. Contact us if you have already settled this invoice.`;
       default:
@@ -282,17 +282,17 @@ async function testLiveEmailSend(recipient) {
     process.env.SMTP_USER ||
     process.env.ZEPTO_FROM_ADDRESS ||
     process.env.RESEND_FROM ||
-    'info@luxangels.lu';
+    'info@ren-net.lu';
 
   try {
     const result = await sendEmailDirect({
       to: recipient,
-      subject: 'Lux Angels — email functionality test',
+      subject: 'Ren-Net — email functionality test',
       body: 'This is a test email sent by the automated email test script.\n\nIf you received this, email is working correctly!',
       html: '<p>This is a <strong>test email</strong> sent by the automated email test script.</p><p>If you received this, <strong>email is working correctly!</strong></p>',
       gateway,
       senderEmail,
-      senderName: 'Lux Angels Test',
+      senderName: 'Ren-Net Test',
     });
     assert(result.ok === true, `Email sent successfully via ${result.provider}`);
     console.log(`     → Check ${recipient} inbox for the test message.`);
@@ -308,7 +308,7 @@ function testVerificationFlow() {
 
   const token = makeToken();
   const hash = hashToken(token);
-  const FRONTEND_URL = process.env.FRONTEND_URL || 'https://luxangelsyamyam-frontend.onrender.com';
+  const FRONTEND_URL = process.env.FRONTEND_URL || 'https://ren-net.onrender.com';
   const email = 'employee@example.com';
   const verifyUrl = `${FRONTEND_URL.replace(/\/$/, '')}/verify-email?email=${encodeURIComponent(email)}&token=${token}`;
 
@@ -331,7 +331,7 @@ function testVerificationFlow() {
 
 (async () => {
   console.log('='.repeat(60));
-  console.log(' Lux Angels — Email Functionality Tests');
+  console.log(' Ren-Net — Email Functionality Tests');
   console.log('='.repeat(60));
 
   testTokenHelpers();
