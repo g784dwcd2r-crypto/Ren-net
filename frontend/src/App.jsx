@@ -3436,7 +3436,12 @@ return (
   {/* Desktop Sidebar */}
   <div className="no-print desk-sidebar" style={{ width: sideOpen ? 215 : 54, background: CL.sf, borderRight: `1px solid ${CL.bd}`, flexDirection: "column", transition: "width .2s", overflow: "hidden", flexShrink: 0 }}>
     <div style={{ padding: sideOpen ? "16px 12px" : "16px 8px", borderBottom: `1px solid ${CL.bd}`, display: "flex", alignItems: "center", gap: 9, cursor: "pointer" }} onClick={() => setSideOpen(!sideOpen)}>
-      <div style={{ width: 30, height: 30, borderRadius: 8, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: CL.bg, flexShrink: 0 }}>RN</div>
+      <div style={{ width: 30, height: 30, borderRadius: 8, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+        <svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 13 C25 25 20 33 20 41 Q20 52 32 52 Q44 52 44 41 C44 33 39 25 32 13 Z" fill="#FFFFFF"/>
+          <path d="M32 32 Q28 37 30 44 Q35 43 36 38 Q35 34 32 32 Z" fill="#6FBF73" opacity="0.9"/>
+        </svg>
+      </div>
       {sideOpen && <div><div style={{ fontSize: 13, fontWeight: 700, color: CL.gold, fontFamily: "'Poppins', 'Montserrat', sans-serif", whiteSpace: "nowrap" }}>Ren-Net Cleaning</div><div style={{ fontSize: 10, color: CL.muted }}>{auth.role === "manager" ? t("managerPortal") : t("ownerPortal")}</div></div>}
     </div>
     <nav style={{ flex: 1, padding: "6px 4px", overflowY: "auto" }}>
@@ -3989,7 +3994,13 @@ const LoginShell = ({ children }) => (
 
 const LoginLogo = ({ lang }) => (
   <div style={{ textAlign: "center", marginBottom: 32 }}>
-    <div style={{ width: 90, height: 90, borderRadius: 28, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", fontSize: 34, fontWeight: 700, color: "#0d0e15", fontFamily: "'Poppins', 'Montserrat', sans-serif", boxShadow: `0 8px 32px ${CL.gold}40` }}>RN</div>
+    <div style={{ width: 90, height: 90, borderRadius: 28, background: `linear-gradient(135deg, ${CL.gold}, ${CL.goldDark})`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", boxShadow: `0 8px 32px ${CL.gold}40` }}>
+      <svg width="54" height="54" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 13 C25 25 20 33 20 41 Q20 52 32 52 Q44 52 44 41 C44 33 39 25 32 13 Z" fill="#FFFFFF"/>
+        <path d="M32 32 Q28 37 30 44 Q35 43 36 38 Q35 34 32 32 Z" fill="#6FBF73" opacity="0.9"/>
+        <ellipse cx="26" cy="41" rx="2" ry="4" fill="#FFFFFF" opacity="0.55"/>
+      </svg>
+    </div>
     <h1 style={{ margin: 0, fontFamily: "'Poppins', 'Montserrat', sans-serif", fontSize: 26, color: CL.gold, letterSpacing: "0.06em" }}>Ren-Net Cleaning</h1>
     <p style={{ margin: "6px 0 0", fontSize: 13, color: CL.muted, letterSpacing: "0.08em", textTransform: "uppercase" }}>{lang === "en" ? "Management Portal" : "Portail de gestion"}</p>
   </div>
